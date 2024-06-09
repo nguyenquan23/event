@@ -1,5 +1,5 @@
 const config = {
-  baseUrl: 'http://localhost:8080/',
+  baseUrl: 'https://local-guide.azurewebsites.net/',
   frontEndUrl: 'https://interns-local-guide.vercel.app'
 }
 
