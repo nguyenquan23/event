@@ -57,7 +57,7 @@ export default function TourForm({ onCancel, onSubmit, defaultValue, isMutation,
     },
     resolver: yupResolver(tourSchema)
   })
-  const [isStartDateChange, setIsStartTimeChange] = useState<boolean>(false)
+  
   const { data: categoriesData } = useQuery({
     queryKey: ['categories'],
     queryFn: () => categoryApi.getCategories(),
@@ -278,7 +278,7 @@ export default function TourForm({ onCancel, onSubmit, defaultValue, isMutation,
                   onChange={(event) => {
                     field.onChange(event)
                     trigger('includeService')
-                    setIsStartTimeChange(true)
+                   
                     resetField('includeService')
                   }}
                   sx={{
