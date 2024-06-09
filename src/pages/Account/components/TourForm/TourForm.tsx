@@ -17,6 +17,7 @@ import { User } from 'src/types/user.type'
 import { TourSchema, tourSchema } from 'src/utils/rules'
 import MapTourForm from './MapTourForm/MapTourForm'
 import StartTimePickers from './StartTimePickers/StartTimePickers'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 
 interface TourFormProps {
   onSubmit: (data: TourFormData) => void
@@ -30,6 +31,7 @@ export type TourFormData = TourSchema
 
 export default function TourForm({ onCancel, onSubmit, defaultValue, isMutation, request }: TourFormProps) {
   const {
+    resetField,
     trigger,
     control,
     handleSubmit,
@@ -44,7 +46,7 @@ export default function TourForm({ onCancel, onSubmit, defaultValue, isMutation,
       transportation: '',
       duration: 0,
       unit: '',
-      includeService: '',
+      includeService: new Date(),
       categories: [],
       pricePerTraveler: 0,
       limitTraveler: 0,
@@ -55,6 +57,7 @@ export default function TourForm({ onCancel, onSubmit, defaultValue, isMutation,
     },
     resolver: yupResolver(tourSchema)
   })
+  const [isStartDateChange, setIsStartTimeChange] = useState<boolean>(false)
   const { data: categoriesData } = useQuery({
     queryKey: ['categories'],
     queryFn: () => categoryApi.getCategories(),
@@ -265,15 +268,27 @@ export default function TourForm({ onCancel, onSubmit, defaultValue, isMutation,
             label={'Itinerary'}
             className='min-h-32'
           />
-          {/* <ControlledTextField
-            fullWidth={true}
-            multiline={true}
-            rows={3}
-            control={control}
-            name={'includeService'}
-            label={'Include Service'}
-            className='mb-6'
-          /> */}
+          <Controller
+              control={control}
+              name='includeService'
+              render={({ field }) => (
+                <DatePicker
+                  disablePast
+                 label = "organization day"
+                  onChange={(event) => {
+                    field.onChange(event)
+                    trigger('includeService')
+                    setIsStartTimeChange(true)
+                    resetField('includeService')
+                  }}
+                  sx={{
+                    bgcolor: 'white',
+                    border: '8px',
+                    minWidth: '200px'
+                  }}
+                />
+              )}
+            />
           <ControlledTextField
             fullWidth={true}
             multiline={true}

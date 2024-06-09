@@ -20,7 +20,7 @@ export type Tour = {
   name: string
   description: string
   transportation: string
-  includeService: string
+  includeService: Date
   duration: number
   unit: string
   startTimes: string[]

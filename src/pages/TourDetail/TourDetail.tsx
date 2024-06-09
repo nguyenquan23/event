@@ -37,7 +37,7 @@ const TourDetail: React.FC = () => {
     name: '',
     description: '',
     transportation: '',
-    includeService: '',
+    includeService: new Date(),
     duration: 0,
     unit: '',
     locations: [],

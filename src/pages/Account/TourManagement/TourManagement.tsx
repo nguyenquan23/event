@@ -79,7 +79,7 @@ export default function TourManagement({ guideId }: Props) {
       name: '',
       description: '',
       transportation: '',
-      includeService: '',
+      includeService: new Date(),
       duration: 0,
       unit: '',
       startTimes: [],

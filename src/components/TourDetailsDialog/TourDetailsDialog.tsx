@@ -218,7 +218,7 @@ const TourDetailsDialog: React.FC<TourDetailsDialogProps> = ({
                     <Typography variant='body1' className='font-semibold'>
                       Include services:
                     </Typography>
-                    <span>{tourData.includeService}</span>
+                    <span>{tourData.includeService.toISOString()}</span>
                   </Grid>
                   <Grid item xs={4} sm={8} md={12} className='tour-details__description flex items-center gap-2'>
                     <EventNoteIcon />
