@@ -48,29 +48,7 @@ const ManagementSideNav: React.FC = () => {
                     <ListItemText primary='Event Management' />
                   </ListItemButton>
                 </ListItem>
-                {/* <Divider />
-                <ListItem disablePadding sx={{ display: 'block' }}>
-                  <ListItemButton
-                    component={Link}
-                    to={path.bookingsManagement}
-                    selected={isActive(location, path.bookingsManagement)}
-                  >
-                    <ListItemIcon>
-                      <ConfirmationNumberOutlinedIcon fontSize='small' />
-                    </ListItemIcon>
-                    <ListItemText primary='Booking Management' />
-                  </ListItemButton>
-                </ListItem>
-                <Divider /> */}
-                {/* <ListItem disablePadding sx={{ display: 'block' }}>
-                  <ListItemButton component={Link} to={path.schedule} selected={isActive(location, path.schedule)}>
-                    <ListItemIcon>
-                      <CalendarMonthIcon fontSize='small' />
-                    </ListItemIcon>
-                    <ListItemText primary='Schedule Management' />
-                  </ListItemButton>
-                </ListItem>
-                <Divider /> */}
+             
                 <ListItem disablePadding sx={{ display: 'block' }}>
                   <ListItemButton
                     component={Link}
