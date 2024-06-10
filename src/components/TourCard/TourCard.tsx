@@ -118,6 +118,7 @@ export default function TourCard({ tourData, isTourInWishList = false, refetch }
                 ({tourData.reviewDTOS?.length} reviews)
               </span>
             </div>
+            
             <div className='pricing-container font-semibold'>
               From $ {tourData?.pricePerTraveler.toLocaleString()} per person
             </div>

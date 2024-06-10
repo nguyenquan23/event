@@ -31,7 +31,7 @@ export type TourFormData = TourSchema
 
 export default function TourForm({ onCancel, onSubmit, defaultValue, isMutation, request }: TourFormProps) {
   const {
-    resetField,
+    
     trigger,
     control,
     handleSubmit,
@@ -279,7 +279,7 @@ export default function TourForm({ onCancel, onSubmit, defaultValue, isMutation,
                     field.onChange(event)
                     trigger('includeService')
                    
-                    resetField('includeService')
+                    
                   }}
                   sx={{
                     bgcolor: 'white',
