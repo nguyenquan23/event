@@ -89,9 +89,9 @@ export const searchSchema = yup.object({
 })
 
 export const bookingSchema = yup.object({
-  startDate: yup.date().required(),
+  startDate: yup.date(),
   numberTravelers: yup.number().positive().required().typeError('Number of travelers must be positive a number'),
-  startTime: yup.string().required()
+  startTime: yup.string(),
 })
 
 export const requestTourSchema = yup.object({

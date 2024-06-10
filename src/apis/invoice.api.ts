@@ -11,6 +11,7 @@ const invoiceApi = {
   getInvoices() {
     return http.get<SuccessResponse<Invoice[]>>(`${URL_INVOICES}`)
   }
+  
 }
 
 export default invoiceApi

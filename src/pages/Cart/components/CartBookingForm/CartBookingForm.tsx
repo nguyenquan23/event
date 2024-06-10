@@ -47,7 +47,7 @@ export default function CartBookingForm({ setEditMode, booking, onSubmit }: Prop
     queryKey: ['startTimeData', getValues('startDate')],
     queryFn: () =>
       tourApi.getStartTimeOfTour(booking?.tour.id as number, {
-        localDate: formatDate(getValues('startDate'), 'YYYY-MM-DD')
+        localDate: formatDate(getValues('startDate') || new Date(), 'YYYY-MM-DD')
       })
   })
   const [isStartDateChange, setIsStartTimeChange] = useState<boolean>(false)
@@ -57,6 +57,7 @@ export default function CartBookingForm({ setEditMode, booking, onSubmit }: Prop
       setEditMode(false)
     }
   }
+ 
 
   return (
     <form className='flex flex-col gap-4' onSubmit={handleSubmit(onSubmit)}>

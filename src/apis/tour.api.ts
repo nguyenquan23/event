@@ -49,6 +49,9 @@ const tourApi = {
   },
   getToursWithStatus(params: PaginationParams) {
     return http.get<SuccessResponse<ToursResult>>(`${URL_TOURS}/admin`, { params })
+  },
+  getStartDateByBooking(bookingId:number){
+    return http.get<SuccessResponse<Date>>(`${URL_TOURS}/startDate/${bookingId}`)
   }
 }
 

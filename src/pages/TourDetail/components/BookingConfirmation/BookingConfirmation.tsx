@@ -44,7 +44,7 @@ export default function BookingConfirmation({ timeOptions, formData, tour }: Pro
     id: tour.id,
     startDate: selectedTimeOption
       ? new Date(dayjs(formData.startDate).format('YYYY-MM-DD') + 'T' + convertHourToUTC7(selectedTimeOption))
-      : convertDateToUTC7(formData.startDate),
+      : convertDateToUTC7(formData.startDate || new Date()),
     numberTravelers: formData.numberTravelers,
     price: totalPrice
   })
@@ -129,7 +129,7 @@ export default function BookingConfirmation({ timeOptions, formData, tour }: Pro
           <>
             <div className='starting-times flex flex-col gap-2'>
               <div className='font-medium'>
-                Select a starting time of {formatDate(formData.startDate, 'MM/DD/YYYY')}
+                Select a starting time of {formatDate(formData.startDate || new Date(), 'MM/DD/YYYY')}
               </div>
               <div className='flex flex-wrap gap-2'>
                 {timeOptions.map((option) => (

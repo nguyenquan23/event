@@ -2,12 +2,12 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import Button from '@mui/material/Button'
 import OutlinedInput from '@mui/material/OutlinedInput'
-import { DatePicker } from '@mui/x-date-pickers/DatePicker'
-import { useQuery } from '@tanstack/react-query'
+
+// import { useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 import { Controller, useForm } from 'react-hook-form'
-import scheduleApi from 'src/apis/schedule.api'
+// import scheduleApi from 'src/apis/schedule.api'
 import { bookingSchema } from 'src/utils/rules'
 import { BookingAssistantFormData } from '../../TourDetail'
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined'
@@ -22,7 +22,7 @@ interface BookingAssistantProps {
   limitTraveler: number
 }
 
-const BookingAssistant: React.FC<BookingAssistantProps> = ({ onSubmit, id, limitTraveler }: BookingAssistantProps) => {
+const BookingAssistant: React.FC<BookingAssistantProps> = ({ onSubmit, limitTraveler }: BookingAssistantProps) => {
   const {
     trigger,
     control,
@@ -30,23 +30,24 @@ const BookingAssistant: React.FC<BookingAssistantProps> = ({ onSubmit, id, limit
     handleSubmit
   } = useForm<BookingAssistantFormData>({
     defaultValues: {
-      numberTravelers: 1
+      numberTravelers: 1,
+      startDate : new Date(),
     },
     resolver: yupResolver(bookingFormSchema)
   })
 
-  const { data: busySchedulesQuery } = useQuery({
-    queryKey: [`Get busy schedules of tour ${id}`, id],
-    queryFn: () => scheduleApi.getBusySchedulesOfTour(id),
-    enabled: id !== 0
-  })
+  // const { data: busySchedulesQuery } = useQuery({
+  //   queryKey: [`Get busy schedules of tour ${id}`, id],
+  //   queryFn: () => scheduleApi.getBusySchedulesOfTour(id),
+  //   enabled: id !== 0
+  // })
 
-  const checkBusyDate = (date: Date) => {
-    if (busySchedulesQuery?.data.data) {
-      return busySchedulesQuery.data.data.some((busyDate) => dayjs(date).isSame(busyDate, 'day'))
-    }
-    return false
-  }
+  // const checkBusyDate = (date: Date) => {
+  //   if (busySchedulesQuery?.data.data) {
+  //     return busySchedulesQuery.data.data.some((busyDate) => dayjs(date).isSame(busyDate, 'day'))
+  //   }
+  //   return false
+  // }
 
   return (
     <form
@@ -83,9 +84,10 @@ const BookingAssistant: React.FC<BookingAssistantProps> = ({ onSubmit, id, limit
           )}
         />
         {errors.numberTravelers && <div className='pb-3 text-xs text-red-500'>{errors.numberTravelers?.message}</div>}
-        <Controller
+        {/* <Controller
           control={control}
           name='startDate'
+          defaultValue={}
           render={({ field }) => (
             <DatePicker
               className='rounded-sm'
@@ -105,7 +107,7 @@ const BookingAssistant: React.FC<BookingAssistantProps> = ({ onSubmit, id, limit
             />
           )}
         />
-        {errors.startDate && <div className='text-xs text-red-500'>{errors.startDate.message}</div>}
+        {errors.startDate && <div className='text-xs text-red-500'>{errors.startDate.message}</div>} */}
       </div>
       <Button
         type='submit'

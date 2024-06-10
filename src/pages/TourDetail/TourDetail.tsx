@@ -78,7 +78,7 @@ const TourDetail: React.FC = () => {
   })
   const { data: startTimeData } = useQuery({
     queryKey: [`Start time of id ${id} in ${formData.startDate}`, formData],
-    queryFn: () => tourApi.getStartTimeOfTour(Number(id), { localDate: formatDate(formData.startDate, 'YYYY-MM-DD') }),
+    queryFn: () => tourApi.getStartTimeOfTour(Number(id), { localDate: formatDate(formData.startDate || new Date(), 'YYYY-MM-DD') }),
     enabled: tourData?.data.data.unit === Unit.HOURS && tourData?.data.data.duration < 5 && checkAvailability
   })
   const { data: isCanReview } = useQuery({
