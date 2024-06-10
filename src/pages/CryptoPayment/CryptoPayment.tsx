@@ -42,6 +42,7 @@ const CryptoPayment: React.FC = () => {
       },
       {
         onSuccess: (data) => {
+          console.log(data)
           navigate(`${path.bookingSuccess.replace(':id', data.data.data.toString())}`)
         },
         onError: () => {

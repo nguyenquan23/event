@@ -9,11 +9,13 @@ import ContentInvoice from './components/ContentInvoice'
 import PassengerInfo from './components/PassengerInfo/PassengerInfo'
 
 export default function BookingSuccess() {
+  console.log(123455667)
   const { id: invoiceId } = useParams()
   const { data: invoiceData, isPending } = useQuery({
     queryKey: [`Get invoice by ${invoiceId}`],
     queryFn: () => invoiceApi.getInvoice(invoiceId as string)
   })
+  
 
   return (
     <>
